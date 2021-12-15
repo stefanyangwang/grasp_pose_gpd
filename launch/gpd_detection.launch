@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="path_to_gpd_config" value="$(find grasp_pose_gpd)/config/eigen_params.cfg"/>
+  <arg name="frame_id" value="robot_link" doc="frame of the grasps sent to robot"/>
+  <arg name="action_name" value="generate_grasps"/>
+  <!-- Grasp detection using GPD -->
+  <node name="grasp_detection" pkg="grasp_pose_gpd" type="grasp_detection_node" output="screen">
+    <rosparam param="camera_position">[0.0, 0.0, 3.0]</rosparam>
+    <rosparam param="trans_base_cam">[0.3424, 0, 0, 0, 0, 1.22]</rosparam>
+    <rosparam param="trans_grasp_to_approach_point">[-0.04, 0, 0, 0, 0, 0]</rosparam>
+    <rosparam param="trans_grasp_to_another_pose">[0, 0, 0, 3.14, 0, 0]</rosparam>
+    <param name="config_file" value="$(arg path_to_gpd_config)"/>
+    <param name="action_name" value="$(arg action_name)"/>
+  </node>
+</launch>
