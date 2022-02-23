@@ -148,6 +148,8 @@ void GraspDetection::sampleGrasps()
       approach_pose_robot_link_pose_two.pose.orientation.y = rot_base_approach_point_pose_two.y();
       approach_pose_robot_link_pose_two.pose.orientation.z = rot_base_approach_point_pose_two.z();
 
+      result_.grasp_candidate_robot_link = {};
+      result_.approach_pose_robot_link = {};
       result_.grasp_candidate_robot_link.emplace_back(grasp_pose_robot_link_pose_one);
       result_.grasp_candidate_robot_link.emplace_back(grasp_pose_robot_link_pose_two);
       result_.grasp_candidate_camera_link = grasp_pose_camera_link;
